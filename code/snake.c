@@ -5,6 +5,7 @@
  */
 
 #include <stdio.h>
+#include <unistd.h>
 
 #include "../include/snake.h"
 #include "../include/move.h"
@@ -17,7 +18,6 @@ int speed = INIT_SPEED;
 int main(void)
 {
 	SCREEN screen;
-	SDL_Surface sprite;
 	SDL_Rect src, food_place;		
 	SDL_Rect all_dst[32];
 	int quit_screen = TRUE;
@@ -60,7 +60,10 @@ int main(void)
 				/*显示胜利*/
 				game_win(screen.p_screen);
 				while (quit_screen)
+				{
 					quit_screen = key_snake(&key_quit);
+					sleep(10000);
+				}
 			}
 		}
 		
@@ -70,13 +73,18 @@ int main(void)
 			/*显示gameover*/
 			game_over(screen.p_screen);
 			while (quit_screen)
+			{
 				quit_screen = key_snake(&key_quit);
+				usleep(10000);
+			}
 		}
-		appa(screen.p_screen, &sprite, &food_place);
+		appa(&screen, &food_place);
 		SDL_Flip(screen.p_screen);
-	
+		
+		usleep(10000);
 	}
-	SDL_FreeSurface(screen.p_screen);
+	SDL_FreeSurface(screen.show_picture);
+	SDL_FreeSurface(screen.food);
 
 	return 0;
 }

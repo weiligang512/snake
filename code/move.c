@@ -50,6 +50,7 @@ int init_snake(SCREEN *screen, SDL_Rect *src, SDL_Rect *dst, int num)
 	}
 	/*装载蛇结点图片*/	
 	screen->show_picture = SDL_LoadBMP("/usr/games/snakes/image/snake.BMP");
+	screen->food = SDL_LoadBMP("/usr/games/snakes/image/food.bmp");
         sdl_error("SDL_LoadBMP", screen->show_picture);
 	return 0;
 }
@@ -116,10 +117,10 @@ int change_snake(SDL_Rect all_dst[], int *key_flag, int num)
 		/*设置自己的方向*/
 		FLAG |= 0x0001;
 
-		/*如果大于100MS就将蛇头移到下一位置*/
+		/*如果大于speedMS就将蛇头移到下一位置*/
 		if(end_time - begin_time > speed)
 		{	
-			/*蛇头向上移动5个像素*/
+			/*蛇头向上移动15个像素*/
 			temp_dst.y -= 15;
 			/*开始新的计时*/
 			begin_time = end_time;
@@ -136,10 +137,10 @@ int change_snake(SDL_Rect all_dst[], int *key_flag, int num)
 		/*设置自己的方向*/
 		FLAG |= 0x0010;
 
-		/*如果大于100MS就将蛇头移到下一位置*/
+		/*如果大于speedMS就将蛇头移到下一位置*/
 		if(end_time - begin_time > speed)
 		{	
-			/*蛇头向下移动5个像素*/
+			/*蛇头向下移动15个像素*/
 			temp_dst.y += 15;
 			/*开始新的计时*/
 			begin_time = end_time;
@@ -156,10 +157,10 @@ int change_snake(SDL_Rect all_dst[], int *key_flag, int num)
 		/*设置自己的方向*/
 		FLAG |= 0x0100;
 
-		/*如果大于100MS就将蛇头移到下一位置*/
+		/*如果大于speedMS就将蛇头移到下一位置*/
 		if(end_time - begin_time > speed)
 		{	
-			/*蛇头向左移动5个像素*/
+			/*蛇头向左移动15个像素*/
 			temp_dst.x -= 15;
 			/*开始新的计时*/
 			begin_time = end_time;
@@ -176,10 +177,10 @@ int change_snake(SDL_Rect all_dst[], int *key_flag, int num)
 		/*设置自己的方向*/
 		FLAG |= 0x1000;
 
-		/*如果大于100MS就将蛇头移到下一位置*/
+		/*如果大于speedMS就将蛇头移到下一位置*/
 		if(end_time - begin_time > speed)
 		{	
-			/*蛇头向右移动5个像素*/
+			/*蛇头向右移动15个像素*/
 			temp_dst.x += 15;
 			/*开始新的计时*/
 			begin_time = end_time;

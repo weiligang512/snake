@@ -6,6 +6,7 @@
 typedef struct{
         SDL_Surface *p_screen;
         SDL_Surface *show_picture;
+	SDL_Surface *food;
 } SCREEN;
 
 extern Uint32 begin_time, end_time;

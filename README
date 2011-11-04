@@ -1,1 +1,5 @@
 //
+编译：在snake目录下执行 make命令
+安装：在snake目录下执行 sudo make install
+卸裁：在snake目录下执行 sudo make uninstall
+运行：在终端下输入 snake命令

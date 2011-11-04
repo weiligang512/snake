@@ -18,11 +18,10 @@ SDL_Rect rand_xy(SDL_Rect *rcSprite)
 		
 }
 
-SDL_Rect appa(SDL_Surface *screen, SDL_Surface *sprite, SDL_Rect *rcSprite)
+SDL_Rect appa(SCREEN *screen, SDL_Rect *rcSprite)
 {
-	SDL_FillRect(screen, rcSprite, 0);
-	sprite = SDL_LoadBMP("/usr/games/snakes/image/food.bmp");      	 
-		SDL_BlitSurface(sprite, NULL, screen, rcSprite);
+	SDL_FillRect(screen->p_screen, rcSprite, 0);
+		SDL_BlitSurface(screen->food, NULL, screen->p_screen, rcSprite);
 	return *rcSprite;
 }
 

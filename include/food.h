@@ -11,7 +11,7 @@ extern int check(const SDL_Rect *snake);
 
 extern SDL_Rect rand_xy(SDL_Rect *rcSprite);
 
-extern SDL_Rect appa(SDL_Surface *screen, SDL_Surface *sprite, SDL_Rect *rcSprite);
+extern SDL_Rect appa(SCREEN *screen, SDL_Rect *rcSprite);
 
 extern void game_over(SDL_Surface *screen);
 
